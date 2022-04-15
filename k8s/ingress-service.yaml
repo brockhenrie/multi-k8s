@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-web-service
+  name: ingress-service
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   # Avoid the Google Compute Engine controller from processing this Ingress.
@@ -15,17 +15,8 @@ spec:
         backend:
           service:
             name: client-cluster-ip-service
-            port:
+            port: 
               number: 3000
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-api-service
-spec:
-  rules:
-  - http:
-      paths:
       - path: /api/
         pathType: Prefix
         backend:
@@ -33,4 +24,3 @@ spec:
             name: server-cluster-ip-service
             port:
               number: 5000
-  ingressClassName: nginx
