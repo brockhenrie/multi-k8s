@@ -11,3 +11,9 @@ minikube dashboard
 
 minikube tunnel
 
+may have to run 
+kubectl expose deployment client-deployment
+
+then go to 
+127.0.0.1
+
